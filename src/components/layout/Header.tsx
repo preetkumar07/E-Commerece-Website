@@ -1,19 +1,37 @@
 import { useState } from "react";
-import { Search, ShoppingCart, User, Menu, X, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "@/store/useStore";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import {
+  Search,
+  User,
+  Heart,
+  ShoppingCart,
+  Menu,
+  X
+} from "lucide-react";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartCount] = useState(3); // Mock cart count
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const { 
+    cartItemsCount, 
+    wishlist, 
+    setSearchQuery: setStoreSearchQuery
+  } = useStore();
 
-  const navigation = [
-    { name: "Home", href: "#" },
-    { name: "Shop", href: "#" },
-    { name: "Categories", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Contact", href: "#" },
-  ];
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      setStoreSearchQuery(searchQuery);
+      navigate('/shop');
+      setSearchQuery("");
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -21,60 +39,87 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gradient">LuxeStore</h1>
+            <h1 
+              className="text-2xl font-bold text-primary cursor-pointer" 
+              onClick={() => navigate('/')}
+            >
+              LuxeStore
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
+            <button 
+              onClick={() => navigate('/')}
+              className="text-foreground hover:text-primary font-medium transition-colors"
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => navigate('/shop')}
+              className="text-foreground hover:text-primary font-medium transition-colors"
+            >
+              Shop
+            </button>
+            <a href="#categories" className="text-foreground hover:text-primary font-medium transition-colors">
+              Categories
+            </a>
+            <a href="#about" className="text-foreground hover:text-primary font-medium transition-colors">
+              About
+            </a>
+            <a href="#contact" className="text-foreground hover:text-primary font-medium transition-colors">
+              Contact
+            </a>
           </nav>
 
           {/* Search Bar */}
-          <div className="hidden lg:flex items-center max-w-sm w-full mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <input
-                type="text"
+          <div className="hidden lg:flex items-center flex-1 max-w-md mx-8">
+            <form onSubmit={handleSearch} className="relative w-full">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input
+                type="search"
                 placeholder="Search products..."
-                className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full bg-background border-border focus:border-primary"
               />
-            </div>
+            </form>
           </div>
 
-          {/* Actions */}
+          {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            {/* Mobile Search */}
-            <Button variant="ghost" size="icon" className="lg:hidden">
-              <Search className="h-5 w-5" />
-            </Button>
-
             {/* Wishlist */}
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
+            <Button variant="ghost" size="sm" className="hidden sm:flex relative">
               <Heart className="h-5 w-5" />
+              {wishlist.length > 0 && (
+                <Badge 
+                  variant="destructive" 
+                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center text-xs p-0"
+                >
+                  {wishlist.length}
+                </Badge>
+              )}
             </Button>
-
+            
             {/* Account */}
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="sm" className="hidden sm:flex">
               <User className="h-5 w-5" />
             </Button>
-
-            {/* Cart */}
-            <Button variant="ghost" size="icon" className="relative">
+            
+            {/* Shopping Cart */}
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="relative"
+              onClick={() => navigate('/cart')}
+            >
               <ShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
-                <Badge
-                  variant="destructive"
-                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+              {cartItemsCount() > 0 && (
+                <Badge 
+                  variant="destructive" 
+                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center text-xs p-0"
                 >
-                  {cartCount}
+                  {cartItemsCount()}
                 </Badge>
               )}
             </Button>
@@ -82,15 +127,11 @@ const Header = () => {
             {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
@@ -99,26 +140,37 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors"
-                >
-                  {item.name}
-                </a>
-              ))}
+              <button
+                onClick={() => {
+                  navigate('/');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/shop');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
+              >
+                Shop
+              </button>
               
               {/* Mobile Search */}
               <div className="px-3 py-2">
-                <div className="relative">
+                <form onSubmit={handleSearch} className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <input
-                    type="text"
+                  <Input
+                    type="search"
                     placeholder="Search products..."
-                    className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 pr-4 py-2 w-full"
                   />
-                </div>
+                </form>
               </div>
             </div>
           </div>

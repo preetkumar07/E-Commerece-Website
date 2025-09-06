@@ -77,7 +77,12 @@ const FeaturedProducts = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <Button variant="outline" size="lg" className="group">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="group"
+            onClick={() => window.location.href = '/shop'}
+          >
             View All Products
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
