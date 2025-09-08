@@ -98,7 +98,13 @@ const Header = () => {
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
             {/* Wishlist */}
-            <Button variant="ghost" size="sm" className="hidden sm:flex relative">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="flex relative"
+              aria-label="View products"
+              onClick={() => navigate('/shop')}
+            >
               <Heart className="h-5 w-5" />
               {wishlist.length > 0 && (
                 <Badge 
