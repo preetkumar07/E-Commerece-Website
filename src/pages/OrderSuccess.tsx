@@ -10,7 +10,7 @@ const OrderSuccess = () => {
   const orderData = location.state;
 
   useEffect(() => {
-    document.title = "Order Confirmed - LuxeStore";
+    document.title = "Order Confirmed - ShopHub";
     
     if (!orderData) {
       navigate('/');

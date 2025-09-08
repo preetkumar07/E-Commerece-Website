@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Shield, Truck } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const features = [
@@ -23,6 +24,8 @@ const HeroSection = () => {
     { value: "1000+", label: "Premium Products" },
     { value: "99%", label: "Satisfaction Rate" }
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section className="relative overflow-hidden bg-gradient-hero">
@@ -61,11 +64,23 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up">
-              <Button variant="hero" size="lg" className="group">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="group"
+                onClick={() => navigate('/shop')}
+                aria-label="Shop now"
+              >
                 Shop Now
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="bg-background/80 text-foreground border border-border hover:bg-background backdrop-blur"
+                onClick={() => navigate('/shop')}
+                aria-label="View collections"
+              >
                 View Collections
               </Button>
             </div>

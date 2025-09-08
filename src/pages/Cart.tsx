@@ -32,7 +32,7 @@ const Cart = () => {
   const finalTotal = total + shipping + tax;
 
   useEffect(() => {
-    document.title = `Shopping Cart (${itemCount}) - LuxeStore`;
+    document.title = `Shopping Cart (${itemCount}) - ShopHub`;
   }, [itemCount]);
 
   const handleQuantityChange = (productId: string, newQuantity: number) => {

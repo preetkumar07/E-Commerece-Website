@@ -53,7 +53,7 @@ const Checkout = () => {
   const finalTotal = total + shipping + tax;
 
   useEffect(() => {
-    document.title = "Checkout - LuxeStore";
+    document.title = "Checkout - ShopHub";
     
     if (cartItems.length === 0) {
       navigate('/cart');
