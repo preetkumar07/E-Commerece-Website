@@ -46,23 +46,23 @@ export const additionalProducts: Product[] = [
   },
   {
     id: '105',
-    name: '1080p Webcam with Dual Mics',
+    name: 'Premium Grey Shirts',
     price: 59.99,
-    image: 'https://images.unsplash.com/photo-1590086782792-42dd2350140d?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1590086782792-42dd2350140d?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1585079542156-2755d9c8affd?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1529612700005-e35377bf1517?q=80&w=1200&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop'
     ],
-    rating: 4.3,
-    reviews: 188,
-    description: 'Upgrade your meetings and streams with crisp 1080p video and dual noise-reducing microphones. Auto light correction keeps you looking great in any environment.',
-    category: 'electronics',
-    brand: 'ClearView',
+    rating: 4.5,
+    reviews: 210,
+    description: 'Classic premium grey shirts crafted from soft, breathable cotton. Tailored fit with durable stitching for everyday comfort and style.',
+    category: 'fashion',
+    brand: 'WearWell',
     inStock: true,
-    stockCount: 90,
-    features: ['1080p', 'Dual Mics', 'Auto Light Correction'],
-    specifications: { FOV: '78°', Mount: 'Clip/Tripod' }
+    stockCount: 70,
+    features: ['100% Cotton', 'Tailored Fit', 'Breathable'],
+    specifications: { Sizes: 'S-XXL', Color: 'Grey' }
   },
 
   // Clothing / Fashion
@@ -88,23 +88,23 @@ export const additionalProducts: Product[] = [
   },
   {
     id: '202',
-    name: 'Slim-Fit Stretch Jeans',
+    name: 'Premium Shirts',
     price: 49.99,
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1520975922322-170b4e30d6d5?q=80&w=1200&auto=format&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1520975922322-170b4e30d6d5?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop'
     ],
     rating: 4.5,
     reviews: 260,
-    description: 'Modern slim-fit jeans with a hint of stretch for all-day comfort. Durable stitching and classic five-pocket styling pair with everything in your wardrobe.',
+    description: 'Premium shirts with a versatile fit and breathable cotton for daily wear. Durable seams and classic styling pair with everything in your wardrobe.',
     category: 'fashion',
-    brand: 'DenimCo',
+    brand: 'WearWell',
     inStock: true,
     stockCount: 75,
-    features: ['Stretch Denim', 'Reinforced Stitching'],
-    specifications: { Fit: 'Slim', Inseam: '30/32/34' }
+    features: ['Breathable Cotton', 'Durable Seams'],
+    specifications: { Fit: 'Regular', Sizes: 'S-XXL' }
   },
   {
     id: '203',

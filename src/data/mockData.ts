@@ -161,44 +161,42 @@ export const mockProducts: Product[] = [
   // Additional products for a fuller catalog
   {
     id: "5",
-    name: "Smart Fitness Tracker",
-    price: 149.99,
-    image: watchImage,
-    rating: 4.5,
-    reviews: 203,
-    description: "Track your fitness goals with this advanced smart fitness tracker. Features heart rate monitoring, GPS, sleep tracking, and 7-day battery life.",
-    category: "electronics",
-    brand: "FitTech",
+    name: "Premium Sofa Chair",
+    price: 329.99,
+    image: lampImage,
+    rating: 4.7,
+    reviews: 95,
+    description: "Elevate your living space with this premium sofa chair featuring plush cushions, supportive ergonomics, and a timeless silhouette that complements modern interiors.",
+    category: "home",
+    brand: "HomeCraft",
     inStock: true,
-    stockCount: 45,
-    features: ["Heart Rate Monitor", "GPS Tracking", "Sleep Analysis", "7-Day Battery"],
+    stockCount: 20,
+    features: ["Plush Cushions", "Ergonomic Support", "Stain-Resistant Fabric"],
     specifications: {
-      "Battery Life": "7 days",
-      "Display": "1.4 inch AMOLED",
-      "Water Rating": "5ATM",
-      "Sensors": "Heart Rate, GPS, Accelerometer"
+      "Material": "Fabric & Wood",
+      "Dimensions": "90x85x100 cm",
+      "Warranty": "2 Years"
     }
   },
   {
     id: "6",
-    name: "Premium Coffee Maker",
-    price: 299.99,
-    originalPrice: 349.99,
+    name: "Modern Desk Lamp",
+    price: 79.99,
+    originalPrice: 99.99,
     image: lampImage,
-    rating: 4.8,
-    reviews: 167,
-    description: "Brew the perfect cup every time with this premium coffee maker. Features programmable settings, thermal carafe, and built-in grinder.",
+    rating: 4.6,
+    reviews: 180,
+    description: "Sleek and functional desk lamp with adjustable brightness, touch controls, and USB charging to keep your workspace bright and productive.",
     category: "home",
-    brand: "BrewMaster",
+    brand: "ModernLight",
     inStock: true,
-    stockCount: 12,
+    stockCount: 40,
     isSale: true,
-    features: ["Built-in Grinder", "Programmable", "Thermal Carafe", "Auto Clean"],
+    features: ["Adjustable Brightness", "Touch Control", "USB Charging"],
     specifications: {
-      "Capacity": "12 cups",
-      "Grinder": "Conical Burr",
-      "Material": "Stainless Steel",
-      "Warranty": "3 Years"
+      "Light Type": "LED",
+      "Power": "12W",
+      "USB Output": "5V/1A"
     }
   }
 ];
