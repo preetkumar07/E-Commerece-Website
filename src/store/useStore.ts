@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product, CartItem, User, mockProducts } from '@/data/mockData';
+import { additionalProducts } from '@/data/additionalProducts';
 
 interface StoreState {
   // Products
@@ -53,8 +54,8 @@ export const useStore = create<StoreState>()(
   persist(
     (set, get) => ({
       // Initial state
-      products: mockProducts,
-      categories: ['all', 'electronics', 'fashion', 'accessories', 'home'],
+      products: [...mockProducts, ...additionalProducts],
+      categories: ['all', ...Array.from(new Set([...mockProducts, ...additionalProducts].map(p => p.category)))],
       cart: [],
       isCartOpen: false,
       user: null,
@@ -183,7 +184,7 @@ export const useStore = create<StoreState>()(
       }
     }),
     {
-      name: 'luxe-store',
+      name: 'shophub-store',
       partialize: (state) => ({
         cart: state.cart,
         wishlist: state.wishlist,

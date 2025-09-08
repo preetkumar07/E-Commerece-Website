@@ -43,7 +43,7 @@ const Header = () => {
               className="text-2xl font-bold text-primary cursor-pointer" 
               onClick={() => navigate('/')}
             >
-              LuxeStore
+              ShopHub
             </h1>
           </div>
 
@@ -61,15 +61,24 @@ const Header = () => {
             >
               Shop
             </button>
-            <a href="#categories" className="text-foreground hover:text-primary font-medium transition-colors">
+            <button 
+              onClick={() => navigate('/categories')}
+              className="text-foreground hover:text-primary font-medium transition-colors"
+            >
               Categories
-            </a>
-            <a href="#about" className="text-foreground hover:text-primary font-medium transition-colors">
+            </button>
+            <button 
+              onClick={() => navigate('/about')}
+              className="text-foreground hover:text-primary font-medium transition-colors"
+            >
               About
-            </a>
-            <a href="#contact" className="text-foreground hover:text-primary font-medium transition-colors">
+            </button>
+            <button 
+              onClick={() => navigate('/contact')}
+              className="text-foreground hover:text-primary font-medium transition-colors"
+            >
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* Search Bar */}
@@ -157,6 +166,33 @@ const Header = () => {
                 className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
               >
                 Shop
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/categories');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
+              >
+                Categories
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/about');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
+              >
+                About
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/contact');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors w-full text-left"
+              >
+                Contact
               </button>
               
               {/* Mobile Search */}

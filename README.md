@@ -1,157 +1,167 @@
-# LuxeStore 🛍️✨  
-_A modern, scalable e-commerce web application delivering a seamless luxury shopping experience._
+## ShopHub — Modern E‑commerce SPA (React + Vite + Tailwind)
 
-![LuxeStore Banner](https://via.placeholder.com/1200x400?text=LuxeStore+Luxury+E-commerce)
+World‑class, responsive, accessible e‑commerce storefront built with React + TypeScript, Vite, Tailwind, Zustand, and shadcn/ui. Includes filters, search, wishlist, cart/checkout flow, About/Contact/Categories pages, pagination, SEO meta, and Vercel‑ready SPA routing.
 
-<p align="center">
-  <a href="https://github.com/preetkumar07/E-Commerece-Website/stargazers">
-    <img src="https://img.shields.io/github/stars/preetkumat07/E-Commerece-Website?style=for-the-badge&logo=github&color=FFD700" alt="Stars"/>
-  </a>
-  <a href="https://github.com/preetkumar07/E-Commerece-Website/network/members">
-    <img src="https://img.shields.io/github/forks/preetkumat07/E-Commerece-Website?style=for-the-badge&logo=github&color=00BFFF" alt="Forks"/>
-  </a>
-  <a href="https://github.com/preetkumar07/E-Commerece-Website/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/preetkumat07/E-Commerece-Website?style=for-the-badge&color=32CD32" alt="License"/>
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge&logo=vercel" alt="Status"/>
-  </a>
-</p>
+### Preview
+
+![Hero](src/assets/hero-banner.jpg)
+
+<div align="center">
+
+<img alt="Product UI" src="src/assets/products/handbag-leather.jpg" width="300"/>
+<img alt="Product UI" src="src/assets/products/headphones-wireless.jpg" width="300"/>
+<img alt="Product UI" src="src/assets/products/watch-luxury.jpg" width="300"/>
+
+</div>
 
 ---
 
-## 📑 Table of Contents  
-- [Overview](#-overview)  
-- [Features](#-features)  
-- [Technologies Used](#️-technologies-used)  
-- [Getting Started](#-getting-started)  
-- [Installation](#-installation)  
-- [Running Locally](#️-running-locally)  
-- [Editing the Code](#-editing-the-code)  
-- [Deployment](#-deployment)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
+### Table of contents
+- Features
+- Tech stack
+- Project structure
+- Getting started
+- Development scripts
+- Environment + configuration
+- Accessibility and performance
+- Pages and routes
+- Data model
+- Screenshots
+- Deployment (Vercel)
+- QA checklist
+- Roadmap
 
 ---
 
-## 🌐 Overview  
-**LuxeStore** is a next-generation e-commerce platform built to deliver **premium shopping experiences**.  
-It combines modern UI, type-safe code, and blazing-fast builds to create a luxury online store that scales globally.  
+### Features
+- Accessible, responsive UI (mobile‑first, WCAG mindful)
+- Product catalog with filters, search, sort, pagination
+- Product detail with gallery, badges, features/specs, related products
+- Cart with quantity management and totals (Zustand persisted)
+- Wishlist toggle
+- About with timeline, testimonials, team
+- Categories overview linking to filtered Shop
+- Contact with validated form, map, FAQ accordion
+- SEO titles/meta per page
+- Lazy‑loaded images and performant Vite builds
+- Vercel SPA rewrites for deep links
 
----
+### Tech stack
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS + shadcn/ui + lucide‑react icons
+- Zustand (state + persistence)
+- TanStack Query provider (future‑ready)
 
-## 🚀 Features  
-- 📱 **Responsive Design** – Works seamlessly across mobile, tablet & desktop  
-- 🛡 **Type-Safe Codebase** – Built with TypeScript  
-- 🎨 **Modern UI** – Powered by shadcn-ui & Tailwind CSS  
-- ⚡ **Fast Development** – Using Vite for HMR & super-fast builds  
-- 🛍 **Product Showcase** – Premium products with filters & sorting options  
-
-![App Screenshot](https://via.placeholder.com/900x500?text=LuxeStore+UI+Preview)  
-
----
-
-## 🛠️ Technologies Used  
-
-| Tech              | Purpose                                |
-|-------------------|----------------------------------------|
-| ⚡ **Vite**        | Next-gen frontend tooling               |
-| 🟦 **TypeScript**  | Type safety & reliability               |
-| ⚛️ **React**       | UI library                             |
-| 🎨 **shadcn-ui**   | Accessible, reusable UI components      |
-| 🌈 **Tailwind CSS**| Utility-first CSS framework             |
-
----
-
-## 🏁 Getting Started  
-
-### ✅ Prerequisites  
-Make sure you have:  
-- [Node.js](https://nodejs.org/) v16+  
-- [npm](https://www.npmjs.com/)  
-- [Git](https://git-scm.com/)  
-
----
-
-## 📦 Installation  
-```bash
-# Clone the repository 
-
-git clone https://github.com/preetkumar07/LuxeStore.git
-
-# Navigate to the project folder
-cd LuxeStore
-
-# Install dependencies
-npm install
+### Project structure
 ```
-## 🖥️ Running Locally 
-```bash
- # Start the dev server
+src/
+  components/
+    layout/            # Header, Footer
+    products/          # ProductCard, ProductFilters
+    sections/          # HeroSection, FeaturedProducts
+    ui/                # shadcn/ui primitives
+  data/
+    mockData.ts        # seed products
+    additionalProducts.ts # extended catalog (Unsplash images)
+  pages/
+    Index.tsx          # Home
+    Shop.tsx           # Catalog
+    Product.tsx        # PDP
+    Categories.tsx     # Category overview
+    About.tsx          # Company page
+    Contact.tsx        # Contact form + map + FAQ
+  store/
+    useStore.ts        # Zustand state & selectors
+```
+
+### Getting started
+```
+npm install
 npm run dev
 ```
+Open http://localhost:5173
 
-
-Open 👉 http://localhost:5173
-
-## ✏️ Editing the Code
-## Using IDE (VS Code/WebStorm):
-```bash
-
-Open the folder
-
-Edit your code
-
-Commit & push:
-
-git add .
-git commit -m "Update feature"
-git push origin main
+### Development scripts
+```
+npm run dev        # Vite dev server
+npm run build      # Production build (dist/)
+npm run preview    # Preview production build
 ```
 
-## In GitHub Web:
+### Environment + configuration
+- No env vars required. SPA uses local mock data + Unsplash CDN images for additional products.
+- SPA routing config for Vercel is at `public/vercel.json` (rewrites all to `/index.html`).
 
-Navigate → File → ✏️ Edit → Commit changes
+### Accessibility and performance
+- Alt text on all images; keyboard‑focusable controls; proper labels
+- Sufficient color contrast via theme tokens
+- Semantic headings and ARIA on interactive components
+- Images use `loading="lazy"` and `decoding="async"`
+- Vite production builds minify and optimize assets
 
-## With GitHub Codespaces:
+### Pages and routes
+- `/` Home (hero, featured)
+- `/shop` Catalog (filters, search, sort, pagination)
+- `/product/:id` Product detail (gallery, specs, related)
+- `/categories` Category overview
+- `/about` Company (timeline, testimonials, team)
+- `/contact` Contact form (validated) + map + FAQ
 
-- Code > Codespaces >  New Codespace
-
-Edit online, commit & push directly
-
-## 🌍 Deployment
-
-Deploy easily with:
-
-- Vercel → Guide
-
-- Netlify → Guide
-
-- GitHub Pages → Guide
-
-Build command:
-```bash
-
-npm run build
+### Data model (excerpt)
+```ts
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  images?: string[];
+  rating: number;
+  reviews: number;
+  description: string;
+  category: string;
+  brand: string;
+  inStock: boolean;
+  stockCount: number;
+  isNew?: boolean;
+  isSale?: boolean;
+  features?: string[];
+  specifications?: Record<string, string>;
+}
 ```
 
-## 🤝 Contributing
+### Screenshots
+- Hero: `src/assets/hero-banner.jpg`
+- Product assets: `src/assets/products/*`
+- Additional catalog uses Unsplash CDN (see `src/data/additionalProducts.ts`)
 
-We welcome contributions!
-```bash
+### Deployment (Vercel)
+1) Push to GitHub
+2) Vercel → New Project → Import repository
+3) Framework preset: Vite
+4) Build command: `npm run build`
+5) Output directory: `dist`
+6) SPA rewrite config picked from `public/vercel.json`
 
- Fork this repo
- Create feature branch
-git checkout -b feature/your-feature
+Post‑deploy checks:
+- Visit `/`, `/shop`, `/product/101`, `/about`, `/contact`, `/categories`
+- Verify images load and pagination works
 
- Commit your changes
-git commit -m "Add new feature"
+### QA checklist
+- Header/Footer render across all pages
+- SEO titles/meta applied on Home, Shop, Product
+- Catalog: search, category filter, price range slider, sort, pagination
+- PDP: image gallery, wishlist toggle, add to cart, tabs
+- Cart: add/update/remove; totals correct
+- About: timeline, testimonials carousel, team avatars
+- Categories: visible thumbnails and navigation to filtered Shop
+- Contact: client‑validated form, Map iframe, FAQ accordion
+- Accessibility: keyboard nav OK; focus styles visible
+- Performance: images lazy‑load; Lighthouse 90+ targets
 
-# Push branch
-git push origin feature/your-feature
-```
-
-
- Then Open a PR 🚀
-
-
+### Roadmap
+- Dark mode toggle and theme tokens
+- Lightbox on product images
+- Analytics (Vercel Analytics or Plausible)
+- Payment integration (Stripe) and real auth (Supabase)

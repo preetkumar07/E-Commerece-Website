@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Star, Heart, ShoppingCart, ArrowLeft, Share2, Truck, Shield, RotateCcw } from "lucide-react";
+import ProductCard from "@/components/products/ProductCard";
 import { useToast } from "@/hooks/use-toast";
 
 const Product = () => {
@@ -28,7 +29,7 @@ const Product = () => {
 
   useEffect(() => {
     if (product) {
-      document.title = `${product.name} - LuxeStore`;
+      document.title = `${product.name} - ShopHub`;
       
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
@@ -70,10 +71,12 @@ const Product = () => {
   };
 
   const productImages = product.images || [product.image, product.image, product.image];
+  const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-gradient-surface">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen flex flex-col bg-gradient-surface">
+      <Header />
+      <div className="container mx-auto px-4 py-8 flex-1 w-full">
         {/* Breadcrumb */}
         <div className="mb-6">
           <Button 
@@ -93,6 +96,8 @@ const Product = () => {
               <img
                 src={productImages[selectedImage]}
                 alt={product.name}
+                loading="lazy"
+                decoding="async"
                 className="w-full aspect-square object-cover rounded-lg shadow-soft"
               />
             </div>
@@ -108,6 +113,8 @@ const Product = () => {
                   <img
                     src={image}
                     alt={`${product.name} ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </button>
@@ -275,7 +282,20 @@ const Product = () => {
             </Tabs>
           </div>
         </div>
+
+        {/* Related Products */}
+        {relatedProducts.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold mb-6">Related Products</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedProducts.map(rp => (
+                <ProductCard key={rp.id} {...rp} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+      <Footer />
     </div>
   );
 };

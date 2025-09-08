@@ -30,7 +30,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">LuxeStore</h3>
+            <h3 className="text-2xl font-bold mb-4">ShopHub</h3>
             <p className="text-primary-foreground/80 mb-6 max-w-md">
               Your destination for premium products and exceptional shopping experiences. 
               Quality, style, and service in every purchase.
@@ -44,7 +44,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-accent" />
-                <span>hello@luxestore.com</span>
+                <span>hello@shophub.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-accent" />
@@ -98,7 +98,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-primary-foreground/80 text-sm">
-              © 2024 LuxeStore. All rights reserved.
+              © 2024 ShopHub. All rights reserved.
             </p>
 
             {/* Social Links */}

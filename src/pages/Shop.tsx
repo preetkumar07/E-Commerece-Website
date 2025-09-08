@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { useStore } from "@/store/useStore";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
@@ -14,19 +16,24 @@ const Shop = () => {
   } = useStore();
 
   const products = getFilteredProducts();
+  const pageSize = 9;
+  const [page, setPage] = useState(1 as number);
+  const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
+  const pagedProducts = products.slice((page - 1) * pageSize, page * pageSize);
 
   useEffect(() => {
-    document.title = "Shop - LuxeStore | Premium Products Collection";
+    document.title = "Shop - ShopHub | Premium Products Collection";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Browse our extensive collection of premium products. Find electronics, fashion, accessories, and home goods with fast shipping and excellent service.');
+      metaDescription.setAttribute('content', 'Browse our extensive collection of premium products at ShopHub. Find electronics, fashion, accessories, and home goods with fast shipping and excellent service.');
     }
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-surface">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen flex flex-col bg-gradient-surface">
+      <Header />
+      <div className="container mx-auto px-4 py-8 flex-1 w-full">
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-4">Shop</h1>
@@ -77,7 +84,7 @@ const Shop = () => {
             {/* Products Grid */}
             {products.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {products.map((product) => (
+                {pagedProducts.map((product) => (
                   <ProductCard
                     key={product.id}
                     {...product}
@@ -105,8 +112,31 @@ const Shop = () => {
               </div>
             )}
           </main>
+          {/* Pagination */}
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page === 1}
+            >
+              Previous
+            </Button>
+            <span className="text-sm text-muted-foreground">
+              Page {page} of {totalPages}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
